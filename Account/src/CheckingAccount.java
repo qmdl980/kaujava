@@ -19,14 +19,18 @@ public class CheckingAccount extends Account{
 		}
 	}
 	
-	@Override public void debit(double minus){
-		/*if(getBalance() < -(credit_limit){
-			System.out.print("Debit amount is more than credit limit! \n");
-		} else {*/
-		changeBalance(getBalance() - minus);
+	@Override public void debit(double minus) throws Exception{
+		if(minus < 0){
+			throw new Exception(" 음수입력!");
+		}else if(minus > getBalance() + credit_limit){
+			throw new Exception("Debit amount exceeded account balance.");
+		}
+		else{
+			changeBalance(getBalance() - minus);
+		}
 	}
 	
-	public void passTime(int time){
+	@Override public void passTime(int time){
 		if(getBalance() < 0){
 			changeBalance(getBalance() * (1 + (loan_interest * time)));
 		} else {

@@ -9,12 +9,8 @@ public abstract class Account {
 	public void credit(double add){
 		balance = balance + add;
 	}
-	public void debit(double minus){
-		if(balance > minus){
-			balance = balance - minus;
-		} else{
-			System.out.print("Balance is not enough! \n");
-		}
+	public void debit(double minus) throws Exception{
+		balance -= minus;
 	}
 	public double getBalance(){
 		return balance;

@@ -8,17 +8,18 @@ public class SavingAccount extends Account{
 		this.interest = interest;
 	}
 	
-	public void debit(double amount){
-		if(getBalance() > 0){
-			if(monthCount < 12){
-				System.out.println("아직 출금할 수 없습니다.");
-			} else {
-				changeBalance(getBalance() - amount);
-			}
+	public void debit(double amount) throws Exception{
+
+		if(monthCount < 12){
+			throw new Exception("아직 출금할 수 없습니다.");
+		}else if(amount < 0){
+			throw new Exception(" 음수입력!");
+		}else if(amount > getBalance()){
+			throw new Exception("Debit amount exceeded account balance.");
 		} else {
-			System.out.println("잔고가 없습니다.");
+			changeBalance(getBalance() - amount);
 		}
-	}
+	} 
 	
 	public double getWithdrawableAccount(){
 		if(monthCount < 12){
