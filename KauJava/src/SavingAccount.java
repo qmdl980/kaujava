@@ -1,11 +1,12 @@
 
 public class SavingAccount extends Account implements Valuable{
 	private double interest;
-	private int monthCount = 0;
+	private int monthCount;
 	
 	public SavingAccount(double balance, double interest){
 		super(balance);
 		this.interest = interest;
+		monthCount = 0;
 	}
 	
 	public void debit(double amount) throws Exception{
