@@ -1,4 +1,4 @@
-
+import java.util.*;
 public abstract class Account implements Valuable{
 	protected double balance;
 	
@@ -17,6 +17,18 @@ public abstract class Account implements Valuable{
 	}
 	protected void changeBalance(double money){
 		balance = money;
+	}
+	public static double sumForAccount(ArrayList<? extends Account> list){
+		double sum = 0;
+		for(Account account : list){
+			sum+= account.getBalance();
+		}
+		return sum;
+	}
+	public static void passTimeForList(ArrayList<? extends Account> list,int month){
+		for(Account account : list){
+			account.passTime(month);
+		}
 	}
 	public abstract double getWithdrawableAccount();
 	public abstract void passTime(int time);
